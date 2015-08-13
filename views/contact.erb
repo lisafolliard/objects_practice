@@ -1,0 +1,7 @@
+<h1>All Kontacks</h1>
+<h3>Here are your kontacts: </h3>
+<ul>
+  <% @all_contacts.each() do |contact| %>
+  <li><a href="/contact<%= contact.id() %>"><%= contact.last_name() %> <%= contact.first_name() %> <%= contact.job_title() %> <%= contact.company() %></a></li>
+<% end %>
+</ul>
