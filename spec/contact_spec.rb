@@ -38,4 +38,14 @@ describe(Contact) do
     end
   end
 
+  describe('#add_phone') do
+    it('adds a new phone to contact') do
+      test_contact = Contact.new({:last_name => "Smith", :first_name => "Tom", :job_title => 'Grand Poo Bah', :company => "The Man"})
+      test_phone = Phone.new({:area_code => 503, :last_seven => 6781999, :p_type => 'Home'})
+      test_contact.add_phone(test_phone)
+      expect(test_contact.phone()).to(eq([test_phone]))
+    end
+  end
+
+
 end
