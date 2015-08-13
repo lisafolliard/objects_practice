@@ -47,5 +47,22 @@ describe(Contact) do
     end
   end
 
+  describe('#add_email') do
+    it('adds a new email to contact') do
+      test_contact = Contact.new({:last_name => "Smith", :first_name => "Tom", :job_title => 'Grand Poo Bah', :company => "The Man"})
+      test_email = Email.new({:email_address => 'kendra.ash32@gmail.com', :e_type => 'Work'})
+      test_contact.add_email(test_email)
+      expect(test_contact.email()).to(eq([test_email]))
+    end
+  end
+  
+  describe('#add_address') do
+    it('adds a new address to contact') do
+      test_contact = Contact.new({:last_name => "Smith", :first_name => "Tom", :job_title => 'Grand Poo Bah', :company => "The Man"})
+      test_address = Address.new({:street_address => '208 Southwest 5th Avenue #205', :city => 'Portland', :state => "OR", :zip_code => 97204, :a_type => "Work"})
+      test_contact.add_address(test_address)
+      expect(test_contact.address()).to(eq([test_address]))
+    end
+  end
 
 end
