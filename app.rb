@@ -5,6 +5,7 @@ require('./lib/contact')
 require('./lib/phone')
 require('./lib/email')
 require('./lib/address')
+require('pry')
 
 get('/') do
   erb(:index)
@@ -19,10 +20,6 @@ get('/contact/form') do
   erb(:contact_new_form)
 end
 
-get('/email_form') do
-  erb(:email_form)
-end
-
 get('/contact/:id') do
   @contact = Contact.find(params.fetch('id').to_i())
   erb(:individual_contact)
@@ -32,9 +29,8 @@ end
 post('/contact') do
   @last_name = params.fetch("last_name")
   @first_name = params.fetch("first_name")
-  @job_title = params.fetch("job_title")
-  @company = params.fetch("company")
-  Contact.new({:last_name => @last_name, :first_name => @first_name, :job_title => @job_title, :company => @company}).save()
+
+  Contact.new({:last_name => @last_name, :first_name => @first_name}).save()
   @all_contacts = Contact.all()
   erb(:success)
 end
